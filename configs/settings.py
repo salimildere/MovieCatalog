@@ -31,6 +31,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 LOCAL_APPS = [
+    "movie_catalog.api.apps.ApiConfig",
 ]
 
 THIRD_PARTY_APPS = [
