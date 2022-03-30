@@ -134,8 +134,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Cache
 
-REDIS_HOST = env("REDIS_HOST", default="localhost")
-REDIS_PORT = env("REDIS_PORT", default="6378")
+REDIS_HOST = env("REDIS_HOST", default="redis")
+REDIS_PORT = env("REDIS_PORT", default="6379")
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -160,7 +160,7 @@ REST_FRAMEWORK = {
 
 # Content Service
 
-CONTENT_SERVICE_URL = env("CONTENT_SERVICE_URL", default="http://localhost:8000")
+CONTENT_SERVICE_URL = env("CONTENT_SERVICE_URL", default="http://localhost:8003")
 
 try:
     from configs.settings_local import *

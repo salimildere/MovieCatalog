@@ -37,7 +37,6 @@ class ContentServiceTestCase(TestCase):
 
     def test_get_content_list_returns_empty_list(self):
         with mock.patch(self.mocked_service, return_value=self.invalid_mock):
-            print(self.service.get_content_list([9999]))
             return_value = self.service.get_content_list([9999])
             self.assertIsInstance(return_value, list)
             self.assertEqual(return_value, [])
