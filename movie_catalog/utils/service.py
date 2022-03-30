@@ -17,8 +17,9 @@ class ContentService:
         url = f"{self.service_url}/api/v1/content/"
         try:
             response = requests.get(url, params={"id": content_id})
-        except ConnectionError as exc:
-            raise f"Error connecting to content service: {exc}. Content ID: {content_id}"
+        except ConnectionError:
+            logger.error(f"Content Service is not available. Content ID: {content_id}")
+            raise Exception("Content Service is not available")
 
         content = response.json()
         return content

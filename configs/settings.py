@@ -160,7 +160,7 @@ REST_FRAMEWORK = {
 
 # Content Service
 
-CONTENT_SERVICE_URL = env("CONTENT_SERVICE_URL", default="http://localhost:8003")
+CONTENT_SERVICE_URL = env("CONTENT_SERVICE_URL", default="http://localhost:8000")
 
 try:
     from configs.settings_local import *
