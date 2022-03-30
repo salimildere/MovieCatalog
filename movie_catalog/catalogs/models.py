@@ -17,6 +17,7 @@ class Catalog(StarterModel):
         null=True,
         blank=True,
     )
+    # TODO: Change for default list and rename contents
     contents_ids = models.JSONField(null=True, blank=True)
 
     class Meta:
