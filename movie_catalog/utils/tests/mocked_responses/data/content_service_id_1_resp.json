@@ -1,0 +1,19 @@
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "title": "agency",
+            "imdb_rating": "1.0",
+            "made_year": 1958,
+            "image": null,
+            "director": "Republican",
+            "genre": [
+                "subject"
+            ],
+            "content_rating": "prevent"
+        }
+    ]
+}
