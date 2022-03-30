@@ -16,7 +16,7 @@ class CatalogDetailViewSet(generics.RetrieveUpdateDestroyAPIView):
 
     def get_object(self):
         obj = super(CatalogDetailViewSet, self).get_object()
-        if obj.contents_ids:
-            data = self.content_service.get_content_list(obj.contents_ids)
-            obj.contents_ids = data
+        if obj.contents:
+            data = self.content_service.get_content_list(obj.contents)
+            obj.contents = data
         return obj

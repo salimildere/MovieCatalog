@@ -17,9 +17,9 @@ class CatalogSerializer(serializers.ModelSerializer):
         if not is_valid:
             return is_valid
 
-        if contents_ids := self.validated_data.get('contents_ids'):
+        if contents := self.validated_data.get('contents'):
             try:
-                value = self.content_service.is_valid_content_list(contents_ids, raise_exception)
+                value = self.content_service.is_valid_content_list(contents, raise_exception)
             except:
                 raise ValidationError('Invalid content list')
             return value

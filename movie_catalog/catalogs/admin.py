@@ -9,4 +9,4 @@ class CatalogAdmin(admin.ModelAdmin):
     list_filter = ('is_active',)
     search_fields = ('title',)
     list_editable = ('title', 'is_active', 'order')
-    readonly_fields = ("contents_ids",)
+    readonly_fields = ("contents",)
