@@ -8,9 +8,12 @@ class ContentServiceTestCase(TestCase):
     """
     python manage.py test movie_catalog.utils.tests.tests.ContentServiceTestCase  --keepdb
     """
+
     def setUp(self):
         self.service = ContentService()
-        self.mocked_service = "movie_catalog.utils.service.ContentService.get_content_from_service"
+        self.mocked_service = (
+            "movie_catalog.utils.service.ContentService.get_content_from_service"
+        )
         self.valid_mock = get_mocked_response(
             "movie_catalog/utils/tests/mocked_responses/data/content_service_id_1_resp.json"
         )

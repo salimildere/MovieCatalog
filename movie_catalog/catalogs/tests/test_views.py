@@ -19,7 +19,9 @@ class CatalogViewSetTestCase(APITestCase):
         CatalogFactory.create_batch(10)
         self.url = reverse("catalogs:catalog")
         self.catalog_field_names = [i.name for i in Catalog._meta.get_fields()]
-        self.mocked_service = "movie_catalog.utils.service.ContentService.get_content_from_service"
+        self.mocked_service = (
+            "movie_catalog.utils.service.ContentService.get_content_from_service"
+        )
         self.valid_mock = get_mocked_response(
             "movie_catalog/utils/tests/mocked_responses/data/content_service_id_1_resp.json"
         )
@@ -31,7 +33,9 @@ class CatalogViewSetTestCase(APITestCase):
     def test_list(self):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data["count"], Catalog.objects.filter(is_active=True).count())
+        self.assertEqual(
+            response.data["count"], Catalog.objects.filter(is_active=True).count()
+        )
 
     def test_response_keys(self):
         response = self.client.get(self.url)
@@ -91,7 +95,9 @@ class CatalogDetailViewSetTestCase(APITestCase):
         self.catalog = CatalogFactory()
         self.url = reverse("catalogs:catalog-detail", kwargs={"pk": self.catalog.pk})
         self.catalog_field_names = [i.name for i in Catalog._meta.get_fields()]
-        self.mocked_service = "movie_catalog.utils.service.ContentService.get_content_from_service"
+        self.mocked_service = (
+            "movie_catalog.utils.service.ContentService.get_content_from_service"
+        )
         self.valid_mock = get_mocked_response(
             "movie_catalog/utils/tests/mocked_responses/data/content_service_id_1_resp.json"
         )
@@ -147,7 +153,9 @@ class CatalogDetailViewSetTestCase(APITestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data["title"], data["title"])
-        self.assertEqual(response.data["contents"][0], self.valid_mock["results"][0]["id"])
+        self.assertEqual(
+            response.data["contents"][0], self.valid_mock["results"][0]["id"]
+        )
         self.assertEqual(response.data["id"], self.catalog.id)
 
     def test_delete(self):
@@ -157,5 +165,7 @@ class CatalogDetailViewSetTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_delete_object_not_exists(self):
-        response = self.client.delete(reverse("catalogs:catalog-detail", kwargs={"pk": 9999}))
+        response = self.client.delete(
+            reverse("catalogs:catalog-detail", kwargs={"pk": 9999})
+        )
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
