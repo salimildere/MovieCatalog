@@ -140,6 +140,10 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 20,
 }
 
+# Content Service
+
+CONTENT_SERVICE_URL = env("CONTENT_SERVICE_URL", default="http://localhost:8000")
+
 try:
     from configs.settings_local import *
 except ImportError:
