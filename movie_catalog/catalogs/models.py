@@ -7,7 +7,7 @@ from movie_catalog.utils.models import StarterModel
 
 
 class Catalog(StarterModel):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, unique=True)
     description = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
     order = models.PositiveIntegerField(null=True, blank=True)
@@ -17,7 +17,7 @@ class Catalog(StarterModel):
         null=True,
         blank=True,
     )
-    remote_contents_ids = models.JSONField(null=True, blank=True)
+    contents_ids = models.JSONField(null=True, blank=True)
 
     class Meta:
         ordering = ["order"]

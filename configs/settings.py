@@ -32,10 +32,12 @@ DJANGO_APPS = [
 ]
 LOCAL_APPS = [
     "movie_catalog.api.apps.ApiConfig",
+    "movie_catalog.catalogs.apps.CatalogsConfig",
 ]
 
 THIRD_PARTY_APPS = [
-    "drf_yasg"
+    "drf_yasg",
+    "django_extensions",
 ]
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
@@ -76,14 +78,13 @@ WSGI_APPLICATION = 'configs.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("POSTGRES_NAME", default="movie_catalog"),
-        "USER": env("POSTGRES_USER", default="postgres"),
-        "PASSWORD": env("POSTGRES_PASSWORD", default="postgres"),
-        "HOST": env("P_HOST", default="postgres"),
-        "PORT": env("POSTGRES_PORT", default="5432"),
+        "NAME": env("DB_NAME", default="postgres"),
+        "USER": env("DB_USER", default="postgres"),
+        "PASSWORD": env("DB_PASSWORD", default="postgres"),
+        "HOST": env("DB_HOST", default="localhost"),
+        "PORT": env("DB_PORT", default="5432"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
