@@ -7,27 +7,48 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Catalog',
+            name="Catalog",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created_at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated_at')),
-                ('title', models.CharField(max_length=100, unique=True)),
-                ('description', models.TextField(blank=True, null=True)),
-                ('is_active', models.BooleanField(default=True)),
-                ('order', models.PositiveIntegerField(blank=True, null=True)),
-                ('image', models.ImageField(blank=True, null=True, upload_to='catalogs/', verbose_name='image')),
-                ('contents_ids', models.JSONField(blank=True, null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created_at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated_at"),
+                ),
+                ("title", models.CharField(max_length=100, unique=True)),
+                ("description", models.TextField(blank=True, null=True)),
+                ("is_active", models.BooleanField(default=True)),
+                ("order", models.PositiveIntegerField(blank=True, null=True)),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="catalogs/",
+                        verbose_name="image",
+                    ),
+                ),
+                ("contents_ids", models.JSONField(blank=True, null=True)),
             ],
             options={
-                'verbose_name': 'Catalogs',
-                'verbose_name_plural': 'Catalog',
-                'ordering': ['order'],
+                "verbose_name": "Catalogs",
+                "verbose_name_plural": "Catalog",
+                "ordering": ["order"],
             },
         ),
     ]

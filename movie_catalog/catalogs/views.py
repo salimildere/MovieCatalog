@@ -9,6 +9,7 @@ class CatalogViewSet(generics.ListCreateAPIView):
     queryset = Catalog.objects.filter(is_active=True).order_by("order")
     serializer_class = CatalogSerializer
 
+
 class CatalogDetailViewSet(generics.RetrieveUpdateDestroyAPIView):
     queryset = Catalog.objects.all()
     serializer_class = CatalogSerializer

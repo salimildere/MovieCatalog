@@ -7,6 +7,7 @@ from requests.exceptions import ConnectionError
 
 logger = logging.getLogger(__name__)
 
+
 class ContentService:
     service_url = settings.CONTENT_SERVICE_URL
     single_invalid_content_exc_msg = "Content id: {} does not exist"
@@ -24,7 +25,7 @@ class ContentService:
 
     def get_content(self, content_id):
         cache_key = f"content_{content_id}"
-        if cached_value:=cache.get(cache_key):
+        if cached_value := cache.get(cache_key):
             return cached_value
 
         content = self.get_content_from_service(content_id)
@@ -32,7 +33,7 @@ class ContentService:
             return None
 
         content = content["results"][0]
-        cache.set(cache_key,content, timeout=60 * 60 * 2)
+        cache.set(cache_key, content, timeout=60 * 60 * 2)
         return content
 
     def get_content_list(self, content_list):
@@ -57,7 +58,9 @@ class ContentService:
 
             if not content:
                 if raise_exception:
-                    raise Exception(self.single_invalid_content_exc_msg.format(content_id))
+                    raise Exception(
+                        self.single_invalid_content_exc_msg.format(content_id)
+                    )
                 else:
                     return False
         return True
