@@ -10,7 +10,7 @@ Everything is containerized. So all you need is Docker installed, and then you c
 docker-compose up -d --build
 ```
 
-And your app will be up on the *port 8000*
+And your app will be up on the *port 8080*
 
 ### Test
 
