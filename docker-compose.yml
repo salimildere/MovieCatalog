@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  django:
+  djangoCatalog:
     build:
       context: .
       dockerfile: ./compose/base/Dockerfile
@@ -14,11 +14,13 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - postgres
-      - redis
+      - postgresCatalog
+      - redisCatalog
     restart: always
+    networks:
+      - movie_network
 
-  postgres:
+  postgresCatalog:
     image: postgres
     ports:
       - "5444:5432"
@@ -28,13 +30,16 @@ services:
       - ./data/postgres:/var/lib/postgresql/data
     restart: always
     networks:
-      - default
+      - movie_network
 
-  redis:
+  redisCatalog:
     image: redis
     ports:
       - "6378:6379"
     restart: always
     networks:
-      - default
+      - movie_network
 
+networks:
+  movie_network:
+    external: true
